@@ -26,21 +26,21 @@ while (true)
                     break;
                 }
 
-            case "2":
+            case "2":    // Создать целочисленный массив
                 {
                     bool CheckError = false;
                     string? input1 = Console.ReadLine();
                     bool result1 = int.TryParse(input1, out var temp1);
                     if (result1 == true)
                     {
-                        int NumberElements = Convert.ToInt32(input1);
+                        int NumberElements = temp1;
                         int[] Массив = new int[NumberElements];
                         for (int i = 0; i < NumberElements; i++)
                         {
                             string? input2 = Console.ReadLine();
                             bool result2 = int.TryParse(input2, out var temp2);
                             if (result2 == true)
-                                Массив[i] = Convert.ToInt32(input2);
+                                Массив[i] = temp2;
                             else
                             {
                                 Console.WriteLine("Неккоректный ввод!");
