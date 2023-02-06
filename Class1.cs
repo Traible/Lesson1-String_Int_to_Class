@@ -38,12 +38,11 @@ internal class IntegerArray
                 {
                     if (Temp == null) Temp = 0;
                         Temp = Temp * 10 + Convert.ToInt32(Convert.ToString(Temporary[j]));
-                    if (j == Temporary.Length - 1)
+                    if (j == Temporary.Length)
                     {
                         if (Temp != null)
                             Matrix.Add((int)Temp);
                     }
-                        
                 }
                 else
                 {
@@ -55,11 +54,11 @@ internal class IntegerArray
             }
         }
     }
-    public string Print()
-    {
-        var Output = string.Join(" ", Matrix);
-        return Output;
-    }
+    //public string Print()
+    //{
+    //    var Output = string.Join(" ", Matrix);
+    //    return Output;
+    //}
 
     public string PrintWithSpaceChar(string SpaceChar)
     {

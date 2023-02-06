@@ -11,6 +11,7 @@ while (true)
     Console.WriteLine("2. Создать целочисленный массив");
     Console.WriteLine("3. Создать целочисленный массив из строки");
     Console.WriteLine("4. Вывести все массивы на экран");
+    Console.WriteLine("5. Добавить целое число в массив");
     Console.Write("\nВыбор: ");
 
     string inputString = Console.ReadLine();
@@ -20,13 +21,13 @@ while (true)
 
         switch (Выбор)
         {
-            case "1":
+            case "1":   //Создать пустой массив
                 {
                     Массивы = new IntegerArray();
                     break;
                 }
 
-            case "2":    // Создать целочисленный массив
+            case "2":   // Создать целочисленный массив
                 {
                     bool CheckError = false;
                     string? input1 = Console.ReadLine();
@@ -60,15 +61,16 @@ while (true)
                     
                 }
 
-            case "3":
+            case "3":   // Создать целочисленный массив из строки
                 {
                     Console.Write("Введите список целых чисел, разделив их символами:  ");
-                    string TempArray = "asd43sf43dg55h3"; //Console.ReadLine(); test 43 // 43 // 55 // 3
+                    string TempArray = "asd1sf2dg3h123"; //Console.ReadLine(); test 1 // 2 // 3 // 123
+                    TempArray += ".";
                     Массивы = new IntegerArray(TempArray);
                     break;
                 }
 
-            case "4":
+            case "4":   // Вывести все массивы на экран
                 {
                     if (Массивы == null)
                         Console.WriteLine("В базе нет массивов.");
@@ -88,7 +90,7 @@ while (true)
                     break;
                 }
 
-            case "5":
+            case "5":   // Добавить целое число в массив
                 {
                     if (Массивы == null)
                         Console.WriteLine("В базе нет массивов.");
