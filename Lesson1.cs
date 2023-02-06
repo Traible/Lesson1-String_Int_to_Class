@@ -28,12 +28,36 @@ while (true)
 
             case "2":
                 {
-                    int NumberElements = Convert.ToInt32(Console.ReadLine());
-                    int[] Массив = new int[NumberElements];
-                    for (int i = 0; i < NumberElements; i++)
-                        Массив[i] = Convert.ToInt32(Console.ReadLine());
-                    Массивы = new IntegerArray(Массив);
-                    break;
+                    bool CheckError = false;
+                    string? input1 = Console.ReadLine();
+                    bool result1 = int.TryParse(input1, out var temp1);
+                    if (result1 == true)
+                    {
+                        int NumberElements = Convert.ToInt32(input1);
+                        int[] Массив = new int[NumberElements];
+                        for (int i = 0; i < NumberElements; i++)
+                        {
+                            string? input2 = Console.ReadLine();
+                            bool result2 = int.TryParse(input2, out var temp2);
+                            if (result2 == true)
+                                Массив[i] = Convert.ToInt32(input2);
+                            else
+                            {
+                                Console.WriteLine("Неккоректный ввод!");
+                                CheckError = true;
+                                break;
+                            }
+                        }
+                        if (CheckError != true)
+                        Массивы = new IntegerArray(Массив);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неккоректный ввод!");
+                        break;
+                    }
+                    
                 }
 
             case "3":
@@ -50,10 +74,15 @@ while (true)
                         Console.WriteLine("В базе нет массивов.");
                     else
                     {
-                        Console.WriteLine("Введите желаемый разделитель:           Space по умолчанию");
+                        Console.WriteLine("Введите желаемый разделитель:           или нажмите Enter -> Space по умолчанию ");
                         string? TempSpace = Convert.ToString(Console.ReadLine());
                         if (TempSpace == "")
                             TempSpace = " ";
+                        if (TempSpace == null) 
+                        {
+                            Console.WriteLine("Непридвиденная ошибка!");
+                            break;
+                        }
                         Console.WriteLine(Массивы.PrintWithSpaceChar(TempSpace));
                     }
                     break;
@@ -66,7 +95,12 @@ while (true)
                     else
                     {
                         Console.WriteLine("Введите целое число.");
-                        Массивы.AddElement(Convert.ToInt32(Console.ReadLine()));
+                        string? input = Console.ReadLine();
+                        bool result = int.TryParse(input, out var temp);
+                        if (result == true)
+                            Массивы.AddElement(Convert.ToInt32(input));
+                        else
+                            Console.WriteLine("Некоректный ввод.");
                     }
                     break;
                 }
