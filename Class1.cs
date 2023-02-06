@@ -7,41 +7,69 @@ using System.Threading.Tasks;
 namespace ClassForIntegerArray;
 internal class IntegerArray
 {
-    private List<int> Array;
+    private List<int> Matrix;
 
     public IntegerArray()
     {
-        Array = new List<int>();
+        Matrix = new List<int>();
+    }
+    public IntegerArray(int number)
+    {
+        Matrix = new List<int>(number);
     }
 
     public IntegerArray(int[] Temporary)
     {
-        Array = new List<int>();
+        Matrix = new List<int>();
         for (int i = 0; i < Temporary.Length; i++)
-            Array.Add(Temporary[i]);
+            Matrix.Add(Temporary[i]);
     }
 
     public IntegerArray(string Temporary)
     {
-        Array = new List<int>();
-
+        Matrix = new List<int>();
+        //this.Temporary = Temporary;
         for (int i = 0; i < Temporary.Length; i++)
         {
-            int Temp = 0;
+            int? Temp = null;
             for (int j = i; j < Temporary.Length; j++)
             {
-                if (Temporary[i] >= '0' && Temporary[i] <= '9')
+                if (Temporary[j] >= '0' && Temporary[j] <= '9')
                 {
-                    Temp = Temp * 10 + Convert.ToInt32(Temporary[i]);
-                    if (j == Temporary.Length) Array.Add(Temp);
+                    if (Temp == null) Temp = 0;
+                        Temp = Temp * 10 + Convert.ToInt32(Convert.ToString(Temporary[j]));
+                    if (j == Temporary.Length - 1)
+                    {
+                        if (Temp != null)
+                            Matrix.Add((int)Temp);
+                    }
+                        
                 }
                 else
                 {
-                    Array.Add(Temp);
+                    if (Temp != null)
+                    Matrix.Add((int)Temp);
                     i = j;
                     break;
                 }
             }
         }
     }
+    public string Print()
+    {
+        var Output = string.Join(" ", Matrix);
+        return Output;
+    }
+
+    public string PrintWithSpaceChar(string SpaceChar)
+    {
+        var Output = string.Join(SpaceChar, Matrix);
+        return Output;
+    }
+
+    public void AddElement(int number)
+    {
+        Matrix.Add(number);
+    }
 }
+
