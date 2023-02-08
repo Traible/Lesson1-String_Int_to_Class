@@ -30,7 +30,6 @@ internal class IntegerArray
     {
         Temporary += ".";
         Matrix = new List<int>();
-        //this.Temporary = Temporary;
         for (int i = 0; i < Temporary.Length; i++)
         {
             int? Temp = null;
@@ -56,11 +55,6 @@ internal class IntegerArray
             }
         }
     }
-    //public string Print()
-    //{
-    //    var Output = string.Join(" ", Matrix);
-    //    return Output;
-    //}
 
     public string PrintWithSpaceChar(string SpaceChar)
     {
@@ -269,7 +263,7 @@ internal class IntegerArray
         int temp2 = Matrix.Count / 2;
         if (temp1 == temp2)
         {
-            for (int i = ((Matrix.Count + 1) / 2) - 1, j = 0; j < 2; j++, i++)
+            for (int i = ((Matrix.Count - 1) / 2), j = 0; j < 2; j++, i++)
             {
                 Median += Matrix[i];
             }

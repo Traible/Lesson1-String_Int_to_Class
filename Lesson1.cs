@@ -76,7 +76,7 @@ while (true)
                                 break;
                             }
                         }
-                        if (CheckError != true)
+                        if (CheckError == false)
                         {
                             Массивы = new IntegerArray(Массив);
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -337,12 +337,14 @@ while (true)
                         Console.WriteLine("В базе нет массивов.");
                     else
                     {
+                        Console.WriteLine("Введите первый элемент диапазона.");
                         string? input1 = Console.ReadLine();
                         bool result1 = int.TryParse(input1, out var temp1);
+                        Console.WriteLine("Введите второй элемент диапазона.");
                         string? input2 = Console.ReadLine();
                         bool result2 = int.TryParse(input2, out var temp2);
                         if (result1 == true && result2 == true)
-                            Массивы.GetItemsFromRange(Convert.ToInt32(input1), Convert.ToInt32(input2));
+                        Массивы.GetItemsFromRange(Convert.ToInt32(input1), Convert.ToInt32(input2));
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
